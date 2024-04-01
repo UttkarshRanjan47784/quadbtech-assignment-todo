@@ -21,7 +21,6 @@ export const todoSlice = createSlice({
             let newArr = state.todoList.filter((item) => {
                 return (item.title != toDelete)
             })
-            console.log(newArr)
             state.todoList = [...newArr]
         },
         updateTodo : (state, action) => {

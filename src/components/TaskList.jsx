@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { memo, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import TodoItem from './TodoItem'
 import { overWriteTodo } from '../app/todoSlice'
 
-export default function TodoList() {
+ const TaskList = memo(() => {
     const todoList = useSelector(state => state.todoList)
     const dispatch = useDispatch()
 
@@ -33,4 +33,6 @@ export default function TodoList() {
         {renderList}
     </div>
   )
-}
+}) 
+
+export default TaskList

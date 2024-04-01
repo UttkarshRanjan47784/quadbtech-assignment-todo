@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo } from '../app/todoSlice';
 
-export default function TodoForm() {
+const TaskInput = memo( () => {
 
     const [newTask, setNewTask] = useState(``)
     const dispatch = useDispatch()
@@ -41,4 +41,6 @@ export default function TodoForm() {
         <button type='submit' onClick={handleNewTask}>ADD</button>
     </form>
   )
-}
+}) 
+
+export default TaskInput
