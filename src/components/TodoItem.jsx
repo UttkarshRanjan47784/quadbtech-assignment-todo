@@ -53,7 +53,7 @@ import { Check, Trash2, Undo2 } from 'lucide-react'
     <div>
         <Accordion type="single" collapsible>
             <AccordionItem value={props.id}>
-                <AccordionTrigger style={props.stat ? {textDecoration : "line-through"} : null}>{props.title}</AccordionTrigger>
+                <AccordionTrigger className={props.stat? `opacity-50` : null} style={props.stat ? {textDecoration : "line-through"} : null}>{props.title}</AccordionTrigger>
                 <AccordionContent>                    
                     <div className='grid grid-cols-6 gap-2'>
                         <div></div>
