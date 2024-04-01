@@ -12,17 +12,20 @@ import {
 import { toast } from 'sonner'
 import { Check, Trash2, Undo2 } from 'lucide-react'
 
+  // memoized component to avoid unnecessary re-renders
  const TodoItem = memo((props) => {
 
     const dispatch = useDispatch()
 
+    // function to change task state
     const handleUpdate  = () => {
-        //frontend update
+
+        //frontend update, dispatch updateTodo with payload containing title of the task to be updated.
         dispatch(updateTodo({
             title : props.title
         }))
 
-        //localStorage Update
+        //localStorage Update. Local storage cannot store arrays hence we convert it to String.
         let arr = JSON.parse(localStorage.getItem(`quadBTechTodo`))
         let newArr = arr.map((item) => {
             if (item.title == props.title)
@@ -31,24 +34,30 @@ import { Check, Trash2, Undo2 } from 'lucide-react'
         })
         let listString = JSON.stringify(newArr)
         localStorage.setItem(`quadBTechTodo`, listString)
+
+        // notification
         toast(`Task Status Updated!`)
     }
 
+    // function to delete task
     const handleDelete  = () => {
+        //frontend update, dispatch deleteTodo with payload containing title of the task to be deleted.
         dispatch(deleteTodo({
             title : props.title
         }))
 
-        //localStorage Update
+        //localStorage Update. Local storage cannot store arrays hence we convert it to String.
         let arr = JSON.parse(localStorage.getItem(`quadBTechTodo`))
         let newArr = arr.filter((item) => {
             return (item.title != props.title)
         })
         let listString = JSON.stringify(newArr)
         localStorage.setItem(`quadBTechTodo`, listString)
+
+        // notification
         toast(`Task Deleted!`)
     }
-
+  // A single task of the todolist
   return (
     <div>
         <Accordion type="single" collapsible>
