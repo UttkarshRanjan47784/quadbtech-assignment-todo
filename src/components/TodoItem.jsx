@@ -10,6 +10,7 @@ import {
     AccordionTrigger,
   } from './ui/accordion'
 import { toast } from 'sonner'
+import { Check, Trash2, Undo2 } from 'lucide-react'
 
  const TodoItem = memo((props) => {
 
@@ -57,8 +58,8 @@ import { toast } from 'sonner'
                     <div className='grid grid-cols-6 gap-2'>
                         <div></div>
                         <div></div>
-                        <Button variant="okay" onClick={handleUpdate} >{props.stat ? `UNDO`:`DONE`}</Button>
-                        <Button variant="danger" onClick={handleDelete}>DELETE</Button>
+                        <Button variant={props.stat ? `undo`:`okay`} onClick={handleUpdate} >{props.stat ? (<Undo2 />):(<Check />)}</Button>
+                        <Button variant="danger" onClick={handleDelete}><Trash2 /></Button>
                         <div></div>
                         <div></div>
                     </div>
