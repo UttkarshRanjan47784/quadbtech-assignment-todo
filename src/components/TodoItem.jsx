@@ -9,6 +9,7 @@ import {
     AccordionItem,
     AccordionTrigger,
   } from './ui/accordion'
+import { toast } from 'sonner'
 
  const TodoItem = memo((props) => {
 
@@ -29,6 +30,7 @@ import {
         })
         let listString = JSON.stringify(newArr)
         localStorage.setItem(`quadBTechTodo`, listString)
+        toast(`Task Status Updated!`)
     }
 
     const handleDelete  = () => {
@@ -43,6 +45,7 @@ import {
         })
         let listString = JSON.stringify(newArr)
         localStorage.setItem(`quadBTechTodo`, listString)
+        toast(`Task Deleted!`)
     }
 
   return (
@@ -62,7 +65,6 @@ import {
                 </AccordionContent>
             </AccordionItem>
         </Accordion>
-        {/* <div style={props.stat ? {textDecoration : "line-through"} : null}>{props.title}</div> */}
     </div>
   )
 })

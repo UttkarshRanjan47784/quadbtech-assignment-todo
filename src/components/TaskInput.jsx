@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addTodo } from '../app/todoSlice';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
+import { toast } from 'sonner';
 
 const TaskInput = memo( () => {
 
@@ -31,6 +32,7 @@ const TaskInput = memo( () => {
         localStorage.setItem(`quadBTechTodo`, listString)
 
         setNewTask(``);
+        toast(`Task added!`)
     }
 
 
