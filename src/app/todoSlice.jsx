@@ -12,15 +12,17 @@ export const todoSlice = createSlice({
             const newTodo = {
                 id : nanoid(),
                 title : action.payload.title,
-                stat : action.payload.status
+                stat : action.payload.stat
             }
             state.todoList.push(newTodo)
         },
         deleteTodo : (state, action) => {
             const toDelete = action.payload.title
-            state.todoList = state.todoList.filter((item) => {
-                return item.title != toDelete
+            let newArr = state.todoList.filter((item) => {
+                return (item.title != toDelete)
             })
+            console.log(newArr)
+            state.todoList = [...newArr]
         },
         updateTodo : (state, action) => {
             const toUpdate = action.payload.title
@@ -29,10 +31,21 @@ export const todoSlice = createSlice({
                     item.stat = !item.stat
                 return item
             })
+        },
+        overWriteTodo : (state, action) => {
+            const arr = action.payload.list
+            let x = arr.map((item)=>{
+                return {
+                    id : nanoid(),
+                    title : item.title,
+                    stat : item.stat
+                }
+            });
+            state.todoList = [...x];
         }
     }
 })
 
-export const {addTodo, deleteTodo, updateTodo} = todoSlice.actions
+export const {addTodo, deleteTodo, updateTodo, overWriteTodo} = todoSlice.actions
 
 export default todoSlice.reducer

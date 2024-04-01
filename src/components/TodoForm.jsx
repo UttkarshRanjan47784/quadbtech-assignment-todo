@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { UseDispatch, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addTodo } from '../app/todoSlice';
 
 export default function TodoForm() {
@@ -18,19 +18,26 @@ export default function TodoForm() {
 
         const newTodo = {
             title : newTask,
-            stat : false
+            stat : false,
         }
-
         dispatch(addTodo(newTodo))
 
         //localStorage update
+        let arr = JSON.parse(localStorage.getItem(`quadBTechTodo`))
+        arr.push(newTodo);
+        let listString = JSON.stringify(arr)
+        localStorage.setItem(`quadBTechTodo`, listString)
 
         setNewTask(``);
     }
 
+
+    const handleChange = (event) => { setNewTask(event.target.value) }
+
   return (
     <form>
-        <input type='text' value={newTask} placeholder='Add New Task'></input>
+        <input 
+        type='text' value={newTask} placeholder='Add New Task' onChange={handleChange}></input>
         <button type='submit' onClick={handleNewTask}>ADD</button>
     </form>
   )
