@@ -54,8 +54,8 @@ import {
                     <div className='grid grid-cols-6 gap-2'>
                         <div></div>
                         <div></div>
-                        <Button onClick={handleUpdate}>{props.stat ? `UNDO`:`DONE`}</Button>
-                        <Button variant="destructive" onClick={handleDelete}>DELETE</Button>
+                        <Button variant="okay" onClick={handleUpdate} >{props.stat ? `UNDO`:`DONE`}</Button>
+                        <Button variant="danger" onClick={handleDelete}>DELETE</Button>
                         <div></div>
                         <div></div>
                     </div>

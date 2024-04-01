@@ -31,7 +31,7 @@ import { ScrollArea } from './ui/scroll-area'
 
   return (
 
-    <ScrollArea className='h-[300px] w-full border-2 rounded-lg border-black px-3'>
+    <ScrollArea className='h-[300px] w-full border-2 rounded-lg border-gray-400 px-3'>
         {renderList}
     </ScrollArea>
   )
