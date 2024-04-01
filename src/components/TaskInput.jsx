@@ -1,6 +1,8 @@
 import React, { memo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo } from '../app/todoSlice';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
 
 const TaskInput = memo( () => {
 
@@ -35,10 +37,10 @@ const TaskInput = memo( () => {
     const handleChange = (event) => { setNewTask(event.target.value) }
 
   return (
-    <form>
-        <input 
-        type='text' value={newTask} placeholder='Add New Task' onChange={handleChange}></input>
-        <button type='submit' onClick={handleNewTask}>ADD</button>
+    <form className='grid grid-cols-5 gap-2'>
+        <Input className='col-span-4 text-center'
+        type='text' value={newTask} placeholder='Add New Task' onChange={handleChange} />
+        <Button type='submit' onClick={handleNewTask} className='text-xl'>+</Button>
     </form>
   )
 }) 

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import TodoItem from './TodoItem'
 import { overWriteTodo } from '../app/todoSlice'
+import { ScrollArea } from './ui/scroll-area'
 
  const TaskList = memo(() => {
     const todoList = useSelector(state => state.todoList)
@@ -25,13 +26,14 @@ import { overWriteTodo } from '../app/todoSlice'
     }, [])
 
     const renderList = todoList.map((item) => {
-        return <TodoItem key={`item.title${Math.random()*1000}`} title={item.title} stat={item.stat} />
+        return <TodoItem key={`item.title${Math.random()*1000}`} id={`item.title${Math.random()*1000}`} title={item.title} stat={item.stat} />
     })
 
   return (
-    <div>
+
+    <ScrollArea className='h-[300px] w-full border-2 rounded-lg border-black px-3'>
         {renderList}
-    </div>
+    </ScrollArea>
   )
 }) 
 

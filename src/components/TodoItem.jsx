@@ -2,6 +2,13 @@ import React, { memo } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { deleteTodo, updateTodo } from '../app/todoSlice'
+import { Button } from './ui/button'
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+  } from './ui/accordion'
 
  const TodoItem = memo((props) => {
 
@@ -40,9 +47,22 @@ import { deleteTodo, updateTodo } from '../app/todoSlice'
 
   return (
     <div>
-        <div style={props.stat ? {textDecoration : "line-through"} : null}>{props.title}</div>
-        <button onClick={handleUpdate}>DONE</button>
-        <button onClick={handleDelete}>DELETE</button>
+        <Accordion type="single" collapsible>
+            <AccordionItem value={props.id}>
+                <AccordionTrigger style={props.stat ? {textDecoration : "line-through"} : null}>{props.title}</AccordionTrigger>
+                <AccordionContent>                    
+                    <div className='grid grid-cols-6 gap-2'>
+                        <div></div>
+                        <div></div>
+                        <Button onClick={handleUpdate}>{props.stat ? `UNDO`:`DONE`}</Button>
+                        <Button variant="destructive" onClick={handleDelete}>DELETE</Button>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+        {/* <div style={props.stat ? {textDecoration : "line-through"} : null}>{props.title}</div> */}
     </div>
   )
 })
